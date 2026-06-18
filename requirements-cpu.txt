@@ -1,0 +1,7 @@
+# CPU-only PyTorch wheel — used by the Dockerfile BEFORE requirements.txt so that
+# sentence-transformers finds torch already satisfied and pip does not pull the
+# multi-GB CUDA build. Keeps the container image ~1.7 GB instead of ~8 GB.
+#
+#   pip install -r requirements-cpu.txt --extra-index-url https://download.pytorch.org/whl/cpu
+#
+torch>=2.5.0

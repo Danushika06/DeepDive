@@ -1,0 +1,21 @@
+# Local container run:  docker compose up --build
+# Then: curl http://localhost:8000/health
+services:
+  deepdive:
+    build: .
+    image: deepdive:local
+    ports:
+      - "8000:8000"
+    env_file:
+      # .env is optional — /health works without keys; research needs GROQ_API_KEY.
+      - path: .env
+        required: false
+    environment:
+      - LOG_LEVEL=INFO
+    volumes:
+      # Persist the HuggingFace cache across rebuilds/restarts.
+      - hf-cache:/opt/hf-cache
+    restart: unless-stopped
+
+volumes:
+  hf-cache:

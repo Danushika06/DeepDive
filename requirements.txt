@@ -1,0 +1,34 @@
+# DeepDive runtime dependencies.
+# Lower bounds are conservative; freeze exact versions with `pip freeze` after first install.
+# NOTE: torch is intentionally omitted here. It is pulled transitively by
+# sentence-transformers (CPU build on Windows). For Docker we install the CPU
+# wheel explicitly first via requirements-cpu.txt to keep the image small.
+
+# --- Agent orchestration ---
+langgraph>=0.2.0
+langchain-core>=0.3.0
+langchain-groq>=0.2.0
+
+# --- RAG: vector store, embeddings, splitting ---
+langchain-community>=0.3.0
+langchain-huggingface>=0.1.0
+langchain-text-splitters>=0.3.0
+sentence-transformers>=2.7.0
+faiss-cpu>=1.8.0
+
+# --- Live web search + page extraction ---
+tavily-python>=0.5.0
+ddgs>=6.0.0
+trafilatura>=1.8.0
+httpx>=0.27.0
+
+# --- Schemas / config / resilience ---
+pydantic>=2.7.0
+pydantic-settings>=2.3.0
+tenacity>=8.2.0
+python-dotenv>=1.0.0
+
+# --- API + CLI presentation ---
+fastapi>=0.110.0
+uvicorn[standard]>=0.29.0
+rich>=13.0.0

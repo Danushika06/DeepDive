@@ -1,0 +1,12 @@
+{"id": "ret-01", "question": "What are the main side effects of statins?", "gold_domains": ["mayoclinic.org", "nih.gov", "ncbi.nlm.nih.gov", "healthline.com", "webmd.com"], "k": 5}
+{"id": "ret-02", "question": "When was the Eiffel Tower completed?", "gold_domains": ["wikipedia.org", "britannica.com", "toureiffel.paris"], "k": 5}
+{"id": "ret-03", "question": "What is the boiling point of water at sea level?", "gold_domains": ["wikipedia.org", "britannica.com", "nist.gov"], "k": 5}
+{"id": "ret-04", "question": "Who invented the World Wide Web?", "gold_domains": ["wikipedia.org", "w3.org", "webfoundation.org", "britannica.com"], "k": 5}
+{"id": "ret-05", "question": "What causes the seasons on Earth?", "gold_domains": ["nasa.gov", "wikipedia.org", "britannica.com", "noaa.gov"], "k": 5}
+{"id": "ret-06", "question": "What is the capital of Australia?", "gold_domains": ["wikipedia.org", "britannica.com"], "k": 5}
+{"id": "ret-07", "question": "How does photosynthesis work?", "gold_domains": ["wikipedia.org", "britannica.com", "khanacademy.org", "nationalgeographic.com"], "k": 5}
+{"id": "ret-08", "question": "What are the health benefits of regular exercise?", "gold_domains": ["mayoclinic.org", "cdc.gov", "nih.gov", "who.int", "healthline.com"], "k": 5}
+{"id": "ret-09", "question": "When did World War II end?", "gold_domains": ["wikipedia.org", "britannica.com", "history.com", "iwm.org.uk"], "k": 5}
+{"id": "ret-10", "question": "What is machine learning?", "gold_domains": ["wikipedia.org", "ibm.com", "mit.edu", "britannica.com"], "k": 5}
+{"id": "ret-11", "question": "How tall is Mount Everest?", "gold_domains": ["wikipedia.org", "britannica.com", "nationalgeographic.com"], "k": 5}
+{"id": "ret-12", "question": "What is the speed of light?", "gold_domains": ["wikipedia.org", "britannica.com", "nist.gov", "nasa.gov"], "k": 5}

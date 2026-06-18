@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "deepdive"
+version = "0.1.0"
+description = "DeepDive — Agentic Research Synthesis Assistant (LangGraph + FAISS + Groq + FastAPI)"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Danushika" }]
+# Versions are managed in requirements.txt (single source of truth for Docker
+# layer caching). Install locally with:
+#   pip install -r requirements.txt
+#   pip install -e . --no-deps
+dependencies = []
+
+[project.scripts]
+deepdive = "deepdive.pipeline:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+pythonpath = ["src", "."]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "evals", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.11"
+ignore_missing_imports = true

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DeepDive — Agentic Research Synthesis</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <script src="https://cdn.jsdelivr.net/npm/marked@12/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3/dist/purify.min.js"></script>
+  <script defer src="/static/app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">◆</span>
+      <div>
+        <div class="brand-title">DeepDive</div>
+        <div class="brand-sub">Agentic Research Synthesis</div>
+      </div>
+    </div>
+    <nav class="tabs">
+      <button class="tab active" data-view="research">Research</button>
+      <button class="tab" data-view="evals">Evals</button>
+      <button class="tab" data-view="history">History</button>
+    </nav>
+    <div class="status-pill" id="health-pill" title="backend health">connecting…</div>
+  </header>
+
+  <main>
+    <!-- ============================ RESEARCH ============================ -->
+    <section class="view active" id="view-research">
+      <div class="panel ask">
+        <label class="field-label" for="question">Research question</label>
+        <textarea id="question" rows="2" placeholder="e.g. What are the main benefits and risks of intermittent fasting?"></textarea>
+        <div class="ask-row">
+          <div class="chips" id="samples"></div>
+          <div class="ask-controls">
+            <label class="inline">Max sources
+              <input type="number" id="max-sources" min="1" max="15" value="4" />
+            </label>
+            <button id="run-btn" class="btn primary">Run research</button>
+            <button id="stop-btn" class="btn ghost" disabled>Stop</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="error-banner" class="error-banner hidden"></div>
+
+      <!-- Flow graph -->
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Agent flow</h2>
+          <span class="muted" id="flow-status">idle</span>
+        </div>
+        <div class="flow" id="flow"></div>
+      </div>
+
+      <div class="grid-2">
+        <!-- Live trace -->
+        <div class="panel">
+          <div class="panel-head">
+            <h2>Live trace</h2>
+            <span class="muted" id="trace-summary"></span>
+          </div>
+          <div class="trace" id="trace">
+            <div class="trace-empty muted">Run a query to stream the per-step trace…</div>
+          </div>
+        </div>
+
+        <!-- Metrics + conflicts -->
+        <div class="stack">
+          <div class="panel">
+            <div class="panel-head"><h2>Metrics</h2></div>
+            <div class="metrics" id="metrics"></div>
+          </div>
+          <div class="panel" id="conflicts-panel" style="display:none">
+            <div class="panel-head"><h2>Cross-source conflicts</h2><span class="badge danger" id="conflicts-count">0</span></div>
+            <div id="conflicts"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Report -->
+      <div class="panel" id="report-panel" style="display:none">
+        <div class="panel-head">
+          <h2>Report</h2>
+          <span class="muted" id="report-meta"></span>
+        </div>
+        <article class="report markdown" id="report"></article>
+        <div class="citations" id="citations"></div>
+      </div>
+    </section>
+
+    <!-- ============================ EVALS ============================ -->
+    <section class="view" id="view-evals">
+      <div class="panel ask">
+        <div class="panel-head"><h2>Evaluation harness</h2><span class="muted">Module 4 — retrieval · extraction · citation-faithfulness</span></div>
+        <div class="ask-controls">
+          <label class="inline">Suite
+            <select id="eval-suite">
+              <option value="all">all</option>
+              <option value="retrieval">retrieval</option>
+              <option value="extraction">extraction</option>
+              <option value="citation">citation</option>
+            </select>
+          </label>
+          <button id="eval-load" class="btn ghost">Load last results</button>
+          <button id="eval-run" class="btn primary">Run fresh</button>
+          <span class="muted" id="eval-status"></span>
+        </div>
+      </div>
+      <div id="eval-results"></div>
+    </section>
+
+    <!-- ============================ HISTORY ============================ -->
+    <section class="view" id="view-history">
+      <div class="grid-2">
+        <div class="panel">
+          <div class="panel-head"><h2>Past runs</h2><button id="history-refresh" class="btn ghost sm">Refresh</button></div>
+          <div id="history-list"></div>
+        </div>
+        <div class="panel" id="history-detail-panel">
+          <div class="panel-head"><h2>Detail</h2><span class="muted" id="history-detail-meta"></span></div>
+          <div id="history-detail" class="muted">Select a run to view its report and trace.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span>LangGraph · FAISS · Groq · FastAPI</span>
+    <a href="/docs" target="_blank">API docs ↗</a>
+  </footer>
+</body>
+</html>
